@@ -1,0 +1,128 @@
+
+/*----------------------------------------chat-menu-----------------------------------------------*/
+let menuItems = document.querySelectorAll(".menu-items");
+
+function hover(){
+    menuItems.forEach((all)=>{
+        all.classList.remove("menu-items-click");
+        this.classList.add("menu-items-click");
+    })
+}
+
+menuItems.forEach((all)=>{
+    all.addEventListener("click", hover);
+})
+
+/*------------------------------------------sign in page-------------------------------------------- */
+
+function eye() {
+
+    let show_eye = document.getElementById("password-show");
+    let hide_eye = document.getElementById("hide-password");
+    let pass_input = document.getElementById("pass[type='password']");
+
+    /* display the password after taping a first charactere*/
+    try {
+        pass_input.addEventListener("input", (e)=>{
+        show_eye.style.display = "flex";
+        if (e.currentTarget.value == 0) {
+            show_eye.style.display = "none";
+        }})
+
+        /* show password */
+        show_eye.addEventListener("click", ()=>{
+        pass_input.type = "text";
+        show_eye.style.display = "none";
+        hide_eye.style.display = "flex";
+        hide_eye.style.marginRight = "0.8rem"
+        });
+        /* hide password */
+        hide_eye.addEventListener("click", ()=>{
+        pass_input.type = "password";
+        show_eye.style.display = "block";
+        hide_eye.style.display = "none";
+        });  
+    } catch (pass_input) {
+        console.error("pass is null");
+    }
+
+}
+
+eye();
+
+/*------------------------------------------chat-------------------------------------------- */
+/*  let search_users = document.getElementById("search-user-input").addEventListener("input", (e)=>{
+     console.log(e.currentTarget.value); 
+      fetch("/messagerie/search.php?match= ");
+}) */
+
+/* function search_user(match){
+    fetch("/messagerie/search.php?match=" + match.currentTarget.value)
+    .then(sa => sa.ok ? sa.json() : null)
+    .then(data => {
+        if (data != null){
+            data.forEach(user => {
+                user_search_box.insertAdjacentHTML("afterbegin", `
+                <div class="user-contact">
+                    <div id="circle"></div>
+                    <ul>
+                        <li>${user[1]}</li>
+                        <li>${user[2]}</li> 
+                    </ul>
+                </div>  
+            `)
+            });
+        }else alert("Impossible de recuperer les utilisateurs")
+    })
+    .catch(() => alert("Impossble de recuperer les utilisateurs"))
+} */
+
+const user_content = document.getElementById("search-user-content");
+const user_input = document.getElementById("search-user-input");
+
+const get_user = async search_text =>{
+    const response = await fetch("/messagerie/search.php");
+    const all_data = await response.json();
+
+    let matches = all_data.filter(data =>{
+    const regex = new RegExp(`^${search_text}`, 'gi');
+    return data.firstname.match(regex) || data.lastname.match(regex);
+    });
+
+
+    if(search_text.length < 1){
+        user_content.innerHTML = "";
+        return matches = "" ;
+    }
+    
+   console.log(matches);
+
+   a = [] === 0;
+
+    display(matches);
+}; 
+
+
+const display = matches =>{
+    if(matches !=a){
+         const html = matches.map(user=>`
+                <div class="user-contact">
+                    <div id="circle"></div>
+                        <ul>
+                            <li>${user.firstname}</li>
+                            <li>${user.lastname}</li> 
+                        </ul>
+                    </div>`    
+                )    
+        user_content.innerHTML = html;
+    }else{
+        alert("aucun utilisateurs trouvée")
+        /* console.log("aucun utilisateur trouvée"); */
+    }                
+}
+
+
+
+
+user_input.addEventListener("input", () => get_user(user_input.value));
+

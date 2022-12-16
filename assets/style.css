@@ -1,0 +1,393 @@
+/* import */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* reset css */
+@import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
+
+
+/* -----------------------------------------------------------------Variables------------------------------------------------------------ */
+html{
+    font-family: "Roboto", sans-serif, Arial, Helvetica;
+    --assets:#5CA8E0;
+    --assets-size: 30%;
+    --menu: #258CD6;
+    --select-icon-menu: #459EDF;
+    --button-color: #438DC2;
+    --background-grey-width: 70%;
+    --background-grey: #f2f2f2;
+    --height-input: 2rem;
+    --width-input: 22rem;
+    --placeholder-color: #808080;
+    --padding-text-assets: 2rem;
+    --margin-input: 2rem;
+}
+
+/* -----------------------------------------------------------------Comomon------------------------------------------------------------ */
+.container{
+    width: 100%;
+    height: 100vh;
+}
+
+/* -----------------------------------------------------------------Asssets------------------------------------------------------------ */
+.assets{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(5, 1fr);
+    background-color: var(--assets);
+    color: #fff;
+    width:  var(--assets-size);
+    height: 100%;
+
+}
+
+.logo{
+    grid-column-start: 1;
+    padding-top: 0.5rem;
+}
+
+.text-content{
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 3;
+    align-items: center;
+}
+
+.text-content h2{
+    font-weight: normal;
+    font-size: 1.5rem;
+    color: #fff;
+}
+.assets h5, h2{
+    padding-left: var(--padding-text-assets, 2rem);
+}
+
+.container .assets{
+    float: left;
+}
+
+/* -----------------------------------------------------------------Main------------------------------------------------------------ */
+.main{
+    display: grid;
+    justify-items: center;
+    align-content: end;
+    background-color: var(--background-grey);
+    height: 100%;
+    width: var(--background-grey-width, 70%);
+}
+
+.container .main{
+    float: right;
+}
+
+/* -----------------------------------------------------------------Form------------------------------------------------------------ */
+.alert{
+    color: white;
+    background-color: #A93226;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    width: 22rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.all-input{
+    width: var(--width-input, 22rem);
+    height: 2.2rem;
+}
+
+.all-input:focus{
+    padding-left: 0.5rem;
+    border: 1px solid #258CD6;
+}
+
+
+#eyes{
+    width: var(--width-input, 22rem);
+    height: 2.2rem;
+    background-color: #fff;
+    margin-bottom: 2rem;
+    display: flex;
+    border: 1px solid grey;
+}
+
+#pass{
+    width: 20rem;
+    display: flex;
+    border-style: none;
+    align-items: center;
+}
+
+
+#eyes-svg{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+#password-show{
+    display: none;
+    cursor: pointer;
+}
+
+#hide-password{
+    display: none;
+    cursor: pointer;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 25rem;
+    margin-bottom: 6rem;
+}
+
+.form h3{
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+}
+
+
+.form .btn-submit{
+    background-color: var(--button-color);
+    height: var(--height-input);
+    width: var(--width-input);
+    border: none;
+    text-align: center;
+}
+
+.form input{
+    width: var(--width-input);
+    height: var(--height-input);
+    outline: none;
+    margin-bottom: 2rem;
+}
+
+
+.form label{
+    padding-bottom: 0.4rem;
+}
+.form ::placeholder{
+    color: var(--placeholder-color);
+    padding-left: 0.4rem;
+}
+
+.btn-submit h4{
+    font-size: 1rem;
+    color: #fff;
+}
+
+/* -----------------------------------------------------------------Web Chat------------------------------------------------------------ */
+
+.webchat-container{
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-template-columns: 10% 30% 60%;
+    grid-template-rows: 15%;
+}
+ 
+.menu{
+    background-color: var(--menu, #459EDF);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column-start: 1;
+    grid-row: 1/end;
+    flex-direction: row;
+}
+
+.user-login{
+    border-bottom: 2px solid grey;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    justify-items: flex-end;
+    align-items: flex-end;
+    grid-column-start: 2;
+    grid-column-end: end;
+    padding-right: 1rem;
+}
+
+.contacts-messages{
+    background-color: var(--background-grey, #f2f2f2);
+    border-right: 2px solid grey;
+    grid-column: 2;
+    grid-row: 2/end;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+
+.contacts-messages h2{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+} 
+
+#bottom{
+    margin-right: 1rem;
+}
+
+#search-user-input{
+    width: 20rem;
+    height: 2rem;
+    border-radius: 5px;
+    border: 1px solid grey;
+    margin-bottom: 2rem;
+    outline: none;
+}
+
+#search-user-container{
+    align-items: center;
+    grid-row-start: 2;
+    grid-column: 1/5;
+}
+
+#search-user-content{
+    width: 100%;
+    height: auto;
+}
+
+.user-contact{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1rem;
+    border: 1px solid grey;
+}
+
+#circle{
+    width: 2rem;
+    margin-right: 1rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-image: url("/assets/img/couverture.jpg");
+    border: 1px solid grey;
+}
+/* send message */
+.messages{
+    grid-column: 3;
+    grid-column-end: auto;
+    grid-row: 2/end;
+    grid-column-end: end;
+    display: grid;
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    margin-bottom: 2rem;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.send-messages-content{
+    width: 100%;
+    height: 5rem;
+    grid-column-start: 1;
+    grid-column-end: end;
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid black;
+}
+
+
+.menu-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-content img{
+    width: 2.5rem;
+    height: auto;
+}
+
+.menu-content h6{
+    color: white;
+    text-align: center;
+    padding-bottom: 3rem;
+    padding-top: 0.5rem;
+}
+
+.menu-items{
+    display: flex;
+    cursor: default;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10rem;
+    width: 100vw;
+}
+
+.menu-items h6{
+    cursor: default;
+}
+
+.menu-items-click{
+    background-color: var(--select-icon-menu, blue);
+    width: 10vw;
+    height: 10rem;
+}
+
+#story{
+    width: calc(100% - 7rem);
+    outline: none;
+    resize: none;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    height: 2rem;
+}
+
+
+.div{
+    width: 100%;
+    grid-row-start: end;
+    grid-column-end: end;
+    grid-column-start: 1;
+    border-radius: 5px;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+}
+
+.div img{
+    width: 1rem;
+    height: auto;
+}
+
+#send-message-form{
+    width: 100%;
+}
+
+#options{
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 2rem;
+}
+
+#btn-send-message{
+    cursor: pointer;
+    background-color: white;
+    height: 2rem;
+    outline: none;
+    border-style: solid;
+    border-color: #b2afaf;
+    width: 2rem;
+}
+
+#btn-send-message:hover{
+    background-color: rgb(79, 198, 43);
+    border-style: solid;
+    outline: none;
+    color: orange;
+    border-color: rgb(52, 124, 31);
+}
+
+
+/* -----------------------------------------------------------------Responsive------------------------------------------------------------ */
+
